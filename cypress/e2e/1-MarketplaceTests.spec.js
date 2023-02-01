@@ -69,7 +69,7 @@ describe("Marketplace page", () => {
     });
   });
 
-  it.only("Pagination test", () => {
+  it("Pagination test", () => {
     cy.get("nav .pagination li").filter(".active").should("contain", "1");
     cy.contains(">").click();
     cy.get("nav .pagination li").filter(".active").should("contain", "2");
@@ -80,5 +80,18 @@ describe("Marketplace page", () => {
 
     cy.contains("|<").click();
     cy.get("nav .pagination li").should("contain", ">|").and("contain", ">");
+  });
+
+  it.only("Ratings test", () => {
+    cy.get("#extension-rating ul li").first().click();
+
+    // How to make test for selecting all carts and check in each card for rating = 4 or 5 stars?
+
+    // selects 2nd card's rating and checks that it's = 4 stars
+    cy.get("section .col-xs-6 div")
+      .eq(2)
+      .within(() => {
+        cy.get("[class='opencart-icon-star-light']").should("have.length", 4);
+      });
   });
 });
