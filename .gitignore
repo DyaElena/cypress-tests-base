@@ -3,3 +3,4 @@
 .DS_Store
 /videos
 /screenshots
+cypress.env.json

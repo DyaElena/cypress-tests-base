@@ -39,22 +39,38 @@ describe("Marketplace page", () => {
     }
   });
 
-  it("Category test - BUG", () => {
+  it.only("Category test", () => {
     cy.get("#extension-category ul")
       .children(".active")
       .should("contain", "All");
 
-    const themes = cy
-      .get("#extension-category ul li")
-      .contains("Themes")
-      .click();
+    const categories = [
+      "Marketplaces",
+      "Themes",
+      "Languages",
+      "Payment Gateways",
+      "Shipping Methods",
+      "Modules",
+      "Order Totals",
+      "Product Feeds",
+      "Reports",
+      "Other",
+      "VQMod",
+    ];
 
-    if (themes) {
-      cy.get("#extension-list .row")
-        .find(".extension-name")
-        .nextUntil("hr")
-        .should("contain", "Themes");
-    }
+    ages.forEach((category) => {
+      cy.get("#extension-category ul li").contains(category).click();
+
+      cy.wait(500); // add delay to wait for table to filter data
+
+      if (themes) {
+        cy.get("#extension-list .row")
+          .find(".extension-name")
+          .nextUntil("hr")
+          .should("contain", "Themes");
+      }
+      //cy.get("tbody tr").each(tableRow => {cy.wrap(tableRow).find("td").eq(6).should("contain", age)});
+    });
   });
 
   it("Search test", () => {
@@ -82,7 +98,7 @@ describe("Marketplace page", () => {
     cy.get("nav .pagination li").should("contain", ">|").and("contain", ">");
   });
 
-  it.only("Ratings test", () => {
+  it("Ratings test", () => {
     cy.get("#extension-rating ul li").first().click();
 
     // How to make test for selecting all carts and check in each card for rating = 4 or 5 stars?
