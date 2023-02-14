@@ -4,7 +4,7 @@ describe("Marketplace page", () => {
     cy.contains("Marketplace").click();
   });
 
-  it("Price links", () => {
+  it.only("Price links", () => {
     // Active link
     cy.get("[class='btn-group hidden-xs hidden-sm']>a")
       .filter(".active")
@@ -39,7 +39,7 @@ describe("Marketplace page", () => {
     }
   });
 
-  it.only("Category test", () => {
+  it("Category test", () => {
     cy.get("#extension-category ul")
       .children(".active")
       .should("contain", "All");

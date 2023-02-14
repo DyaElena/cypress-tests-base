@@ -3,7 +3,7 @@ describe("Test page", () => {
     cy.visit("https://ultimateqa.com/complicated-page");
   });
 
-  it.only("Each button in the container is green", () => {
+  it("Each button in the container is green", () => {
     cy.get('[class="et_pb_row et_pb_row_2 et_pb_row_4col"]').then(
       (container) => {
         cy.wrap(container)

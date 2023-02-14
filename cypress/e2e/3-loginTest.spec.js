@@ -3,7 +3,7 @@ describe("Navigation links", () => {
     cy.visit("https://www.opencart.com/");
   });
 
-  it("Login", () => {
+  it.only("Login", () => {
     cy.get('[class="btn btn-link navbar-btn"]').contains("Login").click();
     cy.get("#input-email").type(Cypress.env("username"));
     cy.get("#input-password").type(Cypress.env("password"));

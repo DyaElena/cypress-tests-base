@@ -3,7 +3,7 @@ describe("Navigation links", () => {
     cy.visit("https://www.opencart.com/");
   });
 
-  it("verify the length and the text of the nav manu", () => {
+  it.only("verify the length and the text of the nav manu", () => {
     const menuLinksTest = [
       "Features",
       "Demo",
